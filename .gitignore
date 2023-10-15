@@ -33,3 +33,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# node_modulesディレクトリとその中身を無視
+/node_modules
+
+.yardoc/
+/doc/

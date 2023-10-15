@@ -1,0 +1,2 @@
+module ScrapedRecruitmentsHelper
+end
