@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get "/" => "scraped_recruitments#index"
+  get '/' => 'scraped_recruitments#index'
   # Defines the root path route ("/")
   # root "articles#index"
 end
