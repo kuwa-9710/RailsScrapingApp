@@ -30,11 +30,12 @@ class RecruitmentCollector::DefaultCrawler
 
       if content
         content_html = content.to_html
+        crawled_datetime = Time.now
       else
         puts "指定したセレクタ #{@recruitment_content} が見つかりませんでした。"
       end
 
-      result << { url: page_url, html: content_html }
+      result << { url: page_url, html: content_html, last_crawled_at: crawled_datetime }
 
       # 1秒間隔で実行
       sleep(1)
