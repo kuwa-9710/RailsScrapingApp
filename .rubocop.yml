@@ -1,0 +1,25 @@
+inherit_from: .rubocop_todo.yml
+
+# AllCopsセクション内で新しいCopsを有効にします
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+
+# 以下は新しいCopsに対する設定です
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
+Gemspec/DevelopmentDependencies:
+  Enabled: true
+
+Gemspec/RequireMFA:
+  Enabled: true
+
+Layout/LineContinuationLeadingSpace:
+  Enabled: true
+
+Layout/LineContinuationSpacing:
+  Enabled: true
+
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
