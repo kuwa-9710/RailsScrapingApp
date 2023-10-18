@@ -1,4 +1,27 @@
-<h2 class="recuritments__title">
-    <%= @scraped_recruitments.title %>
-</h2>
-<p><%= @scraped_recruitments.description %></p>
+<div class="container">
+    <div class="container__inner">
+      <h1 class="maintitle">Ruby on Rails Scraping Application.</h1>
+      <span class="maintitle__sub">求人一覧</span>
+      <div class="box__container">
+        <% @scraped_recruitments.each do |scraped_recruitment| %>
+          <div class="box__inner">
+            <h2 class="title"><%= scraped_recruitment.title %></h2>
+            <span class="deadline"><% scraped_recruitment.deadline %></span>
+            <p class="description"><%= scraped_recruitment.description %></p>
+            <dl class="list">
+              <dt class="list__title">募集元サイト</dt>
+              <dd class="list__content"><a href="<%= scraped_recruitment.url %>"><%= scraped_recruitment.url %></a></dd>
+              <dt class="list__title">団体名</dt>
+              <dd class="list__content"><%= scraped_recruitment.organization_name %></dd>
+              <dt class="list__title">ホームページ</dt>
+              <dd class="list__content"><a href="<%= scraped_recruitment.organization_hp%>"><%= scraped_recruitment.organization_hp %></a></dd>
+              <dt class="list__title">TEL</dt>
+              <dd class="list__content"><%= scraped_recruitment.organization_phone_number %></dd>
+              <dt class="list__title">メールアドレス</dt>
+              <dd class="list__content"><%= scraped_recruitment.organization_email %></dd>
+            </dl>
+          </div>          
+        <% end %>
+      </div>
+    </div>
+</div>
