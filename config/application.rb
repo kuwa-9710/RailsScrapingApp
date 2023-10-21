@@ -13,6 +13,7 @@ module RailsScrapingApp
 
     # アプリケーションのタイムゾーンを日本に設定
     config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
