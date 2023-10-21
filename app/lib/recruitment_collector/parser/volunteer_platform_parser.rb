@@ -23,13 +23,24 @@ class RecruitmentCollector::Parser::VolunteerPlatformParser < RecruitmentCollect
 
   # 締切
   def extract_deadline(html)
-    date_text = html.css(@deadline_selector).text
-    # 正規表現で締切を取り出す
-    extracted_deadline = date_text.match(/\d{4}年\d{1,2}月\d{1,2}日～(\d{4}年\d{1,2}月\d{1,2}日)/)
+    # thをもとにパスを指定
+    th_element = html.at('th:contains("募集期間")')
+    return unless th_element
 
-    return unless extracted_deadline
+    # tdのテキスト取得
+    td_element = th_element.next_element
+    td_text = td_element.text
 
-    Date.parse(extracted_deadline[1])
+    # 正規表現を使用して "2023年10月27日" を抽出
+    date_text = td_text.match(/(\d{4}年\d{1,2}月\d{1,2}日)～(\d{4}年\d{1,2}月\d{1,2}日)/)
+    return unless date_text
+
+    date_str = date_text[2]
+    # 日本語表記の日付文字列を正規化
+    date_str = date_str.gsub(/年|月|日/, '-').gsub(/～/, '')
+
+    # 日付文字列をDate型に変換
+    Date.parse(date_str)
   end
 
   # メール

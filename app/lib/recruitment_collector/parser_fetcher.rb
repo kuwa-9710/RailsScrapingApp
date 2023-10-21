@@ -3,10 +3,9 @@ class RecruitmentCollector::ParserFetcher
     url = recruitment.url
     host = URI.parse(url).host
 
-    puts host
-
     case host # host名からParserを指定
     when 'b.volunteer-platform.org'
+      puts "VolunteerPlatformParserをインスタンス化します"
       RecruitmentCollector::Parser::VolunteerPlatformParser.new
     when 'spovol.net'
       puts "SpovolParserをインスタンス化します"

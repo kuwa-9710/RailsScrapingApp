@@ -13,11 +13,13 @@ class RecruitmentCollector::Parser::SpovolParser < RecruitmentCollector::Default
 
   # 　　正規表現を使用して、締切を抽出
   def extract_deadline(html)
-    date_text = html.css(@deadline_selector).text
-    extracted_deadline = date_text.match(%r{\d{4}/\d{2}/\d{2} \d{2}:\d{2} 〜 (\d{4}/\d{2}/\d{2}) \d{2}:\d{2}})
+    th_element = html.at('th:contains("申込期間")')
+    return unless th_element
 
-    return unless extracted_deadline
+    td_element = th_element.next_element
+    td_text = td_element.text
 
-    Date.parse(extracted_deadline[1])
+    date_text = td_text.match(%r{(\d{4}/\d{2}/\d{2})})[1]
+    Date.strptime(date_text, '%Y/%m/%d')
   end
 end
