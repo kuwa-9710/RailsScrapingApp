@@ -6,7 +6,7 @@
         <% @scraped_recruitments.each do |scraped_recruitment| %>
           <div class="box__inner">
             <h2 class="title"><%= scraped_recruitment.title %></h2>
-            <span class="deadline"><% scraped_recruitment.deadline %></span>
+            <span class="deadline">締切日：<%= l(scraped_recruitment.deadline, format: :default) %></span>
             <p class="description"><%= scraped_recruitment.description %></p>
             <dl class="list">
               <dt class="list__title">募集元サイト</dt>
