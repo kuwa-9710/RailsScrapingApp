@@ -71,3 +71,9 @@ a {
   color: #1a0dab;
   text-decoration: underline;
 }
+
+.desc {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
