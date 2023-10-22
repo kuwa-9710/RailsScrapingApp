@@ -4,9 +4,9 @@ class RecruitmentCollector::Parser::VolunteerPlatformParser < RecruitmentCollect
 
     @title_selector = '.contens_sub_inner h2'
     @desc_selector = '#contens_sub_comment dl dd'
-    @deadline_selector = '#contens_sub_check tbody tr:nth-child(3) td'
-    @organization_name_selector = '.contens_sub_profile table tr:nth-child(1) td a'
-    @organization_email_selector = '.profile_link a'
+    @deadline_selector = '募集期間'
+    @organization_name_selector = '名称'
+    @organization_email_selector = 'E-mail'
     @organization_phone_number_selector = '.contens_sub_profile table tr:nth-child(3) td'
     @organization_hp_selector = ''
   end
@@ -24,7 +24,7 @@ class RecruitmentCollector::Parser::VolunteerPlatformParser < RecruitmentCollect
   # 締切
   def extract_deadline(html)
     # thをもとにパスを指定
-    th_element = html.at('th:contains("募集期間")')
+    th_element = html.at("th:contains('#{@deadline_selector}')")
     return unless th_element
 
     # tdのテキスト取得
@@ -47,12 +47,16 @@ class RecruitmentCollector::Parser::VolunteerPlatformParser < RecruitmentCollect
   def extract_organization_email(html)
     return nil if @organization_email_selector.empty?
 
-    email_link = html.css(@organization_email_selector).first
-    email = email_link['href']
+    th_element = html.at("th:contains('#{@organization_email_selector}')")
+    return unless th_element
 
-    return unless email.start_with?('mailto:')
+    td_element = th_element.next_element.at('a')
 
-    email.sub('mailto:', '').to_s # mailtoが含まれている場合は、削除
+    if td_element
+      td_element['href'].sub('mailto:', '') # 'mailto:'を削除
+    else
+      puts 'Eメールアドレスが見つかりません'
+    end
   end
 
   # 電話番号

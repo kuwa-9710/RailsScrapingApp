@@ -3,10 +3,11 @@ require 'nokogiri'
 class
    RecruitmentCollector::DefaultParser
   def initialize
+    # コメントされている箇所以外はcssセレクタを指定
     @title_selector = ''
     @desc_selector = ''
-    @deadline_selector = ''
-    @organization_name_selector = ''
+    @deadline_selector = '' # 対になっている要素のtextを指定
+    @organization_name_selector = '' # 対になっている要素のtextを指定(ex: tdが欲しい場合、thのtext'主催団体'を指定)
     @organization_email_selector = ''
     @organization_phone_number_selector = ''
     @organization_hp_selector = ''
@@ -44,16 +45,21 @@ class
 
   # 締切
   def extract_deadline(html)
-    return nil if @deadline_selector.empty?
+    th_element = html.at("th:contains('#{@deadline_selector}')")
+    return unless th_element
 
-    html.css(@deadline_selector).text
+    td_element = th_element.next_element
+    td_element.text
   end
 
   # 団体名
   def extract_organization_name(html)
     return nil if @organization_name_selector.empty?
 
-    html.css(@organization_name_selector).text
+    name_element = html.at("th:contains('#{@organization_name_selector}')")
+    return unless name_element
+
+    name_element.next_element.at('a').text
   end
 
   # メールアドレス
