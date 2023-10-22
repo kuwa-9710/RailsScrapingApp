@@ -21,6 +21,14 @@ class RecruitmentCollector::DefaultCrawler
       # homeのURLとボタンのhrefを組み合わせて個別ページのURLを生成
       page_url = "#{@home_url}#{link['href']}"
 
+      # データベース内で既に同じURLが存在するか確認
+      existing_data = ScrapedRecruitment.find_by(url: page_url)
+
+      if existing_data
+        puts "URL #{page_url} は既にクロール済みです。スキップします。"
+        next # 既存のデータがある場合、次のURLに進む
+      end
+
       # 個別ページのhtmlを取得する
       page_html = URI.open("#{page_url}").read
       page_doc = Nokogiri::HTML.parse(page_html)
