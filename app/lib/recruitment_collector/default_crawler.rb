@@ -21,16 +21,13 @@ class RecruitmentCollector::DefaultCrawler
       # homeのURLとボタンのhrefを組み合わせて個別ページのURLを生成
       page_url = "#{@home_url}#{link['href']}"
 
-      # データベース内で既に同じURLが存在するか確認
-      existing_data = ScrapedRecruitment.find_by(url: page_url)
-
-      if existing_data
-        puts "URL #{page_url} は既にクロール済みです。スキップします。"
-        next # 既存のデータがある場合、次のURLに進む
-      end
+      # 既存データがある場合はメッセージを表示して次のURLに進む
+      next if skip_existing_data(page_url)
 
       # 個別ページのhtmlを取得する
-      page_html = URI.open("#{page_url}").read
+      page_html = get_page_html(page_url)
+      next unless page_html # 404の場合などはスキップ
+
       page_doc = Nokogiri::HTML.parse(page_html)
 
       # htmlの範囲を指定する
@@ -50,5 +47,25 @@ class RecruitmentCollector::DefaultCrawler
     end
 
     result
+  end
+
+  private
+
+  def skip_existing_data(page_url)
+    existing_data = ScrapedRecruitment.find_by(url: page_url)
+
+    if existing_data
+      puts "URL #{page_url} は既にクロール済みです。スキップします。"
+      return true # 既存のデータがある場合、trueを返して次のURLに進む
+    end
+
+    false # 既存のデータがない場合はfalseを返す
+  end
+
+  def get_page_html(page_url)
+    URI.open(page_url).read
+  rescue OpenURI::HTTPError => e
+    puts "HTTPエラーが発生しました。URL: #{page_url}, エラー: #{e.message}"
+    nil
   end
 end
