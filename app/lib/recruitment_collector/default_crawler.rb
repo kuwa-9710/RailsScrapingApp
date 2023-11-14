@@ -10,7 +10,7 @@ class RecruitmentCollector::DefaultCrawler
   end
 
   def collect_url_and_html_arr
-    result = [] # 結果を格納する配列
+    results = [] # 結果を格納する配列
     html = URI.open(@site_url).read
     doc = Nokogiri::HTML.parse(html)
 
