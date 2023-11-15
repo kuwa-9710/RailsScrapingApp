@@ -1,3 +1,4 @@
+# クロールとパースを実行する部分
 class CrawlAndParseJob < ApplicationJob
   queue_as :default
 
