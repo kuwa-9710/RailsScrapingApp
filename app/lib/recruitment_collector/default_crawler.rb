@@ -40,13 +40,13 @@ class RecruitmentCollector::DefaultCrawler
         puts "指定したセレクタ #{@recruitment_content} が見つかりませんでした。"
       end
 
-      result << { url: page_url, html: content_html, last_crawled_at: crawled_datetime }
+      results << { url: page_url, html: content_html, last_crawled_at: crawled_datetime }
 
       # 1秒間隔で実行
       sleep(1)
     end
 
-    result
+    results
   end
 
   private
