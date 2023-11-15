@@ -15,16 +15,16 @@ class
 
   def make_parsed_params(recruitment)
     html_string = recruitment.html
-    doc = Nokogiri::HTML(html_string)
+    html = Nokogiri::HTML(html_string)
 
     {
-      title: extract_title(doc),
-      description: extract_description(doc),
-      deadline: extract_deadline(doc),
-      organization_name: extract_organization_name(doc),
-      organization_email: extract_organization_email(doc),
-      organization_phone_number: extract_organization_phone_number(doc),
-      organization_hp: extract_organization_hp(doc),
+      title: extract_title(html),
+      description: extract_description(html),
+      deadline: extract_deadline(html),
+      organization_name: extract_organization_name(html),
+      organization_email: extract_organization_email(html),
+      organization_phone_number: extract_organization_phone_number(html),
+      organization_hp: extract_organization_hp(html),
       last_parsed_at: Time.now
     }
   end
