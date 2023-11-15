@@ -1,7 +1,5 @@
-require_relative '../lib/recruitment_collector/crawl'
-
 class ScrapedRecruitmentsController < ApplicationController
   def index
-    @scraped_recruitments = ScrapedRecruitment.all.order(created_at: :desc).limit(50)
+    @scraped_recruitments = ScrapedRecruitment.parsed_contents
   end
 end
