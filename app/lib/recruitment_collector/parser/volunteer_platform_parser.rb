@@ -1,5 +1,5 @@
 module RecruitmentCollector
-  module Paser
+  module Parser
     # ボランティアプラットフォーム用
     class VolunteerPlatformParser < RecruitmentCollector::DefaultParser
       def initialize
@@ -64,9 +64,8 @@ module RecruitmentCollector
 
       # 電話番号
       def extract_organization_phone_number(html)
-        text = html.css(@organization_phone_number_selector).text
-        numbers = text.scan(/\d/).join
-        numbers.to_i
+        phone_number_text = html.css(@organization_phone_number_selector).text
+        phone_number_text.scan(/\d/).join
       end
     end
   end

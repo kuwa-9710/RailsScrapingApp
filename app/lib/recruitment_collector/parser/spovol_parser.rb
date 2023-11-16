@@ -1,5 +1,5 @@
 module RecruitmentCollector
-  module Paser
+  module Parser
     # スポボラ用
     class SpovolParser < RecruitmentCollector::DefaultParser
       def initialize
