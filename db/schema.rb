@@ -10,22 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_231_010_045_324) do
-  create_table 'scraped_recruitments', force: :cascade do |t|
-    t.text 'url'
-    t.text 'html'
-    t.string 'title'
-    t.integer 'kind'
-    t.text 'description'
-    t.date 'deadline'
-    t.string 'organization_name'
-    t.string 'organization_email'
-    t.integer 'organization_phone_number'
-    t.text 'organization_hp'
-    t.datetime 'last_crawled_at'
-    t.datetime 'last_parsed_at'
-    t.datetime 'last_confirmed_association_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema[7.0].define(version: 2023_11_15_145936) do
+  create_table "scraped_recruitments", force: :cascade do |t|
+    t.text "url"
+    t.text "html"
+    t.string "title"
+    t.integer "kind"
+    t.text "description"
+    t.date "deadline"
+    t.string "organization_name"
+    t.string "organization_email"
+    t.text "organization_phone_number"
+    t.text "organization_hp"
+    t.datetime "last_crawled_at"
+    t.datetime "last_parsed_at"
+    t.datetime "last_confirmed_association_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "organization_id"
   end
+
 end

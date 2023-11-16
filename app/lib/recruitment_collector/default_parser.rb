@@ -74,7 +74,7 @@ module RecruitmentCollector
     def extract_organization_phone_number(html)
       return nil if @organization_phone_number_selector.empty?
 
-      html.css(@organization_phone_number_selector).text.to_i
+      html.css(@organization_phone_number_selector).text
     end
 
     # ホームページ
