@@ -5,14 +5,16 @@ module RecruitmentCollector
       url = recruitment.url
       host = URI.parse(url).host
 
-      case host # host名からParserを指定
-      when 'b.volunteer-platform.org'
-        puts 'VolunteerPlatformParserをインスタンス化します'
-        RecruitmentCollector::Parser::VolunteerPlatformParser.new
-      when 'spovol.net'
-        puts 'SpovolParserをインスタンス化します'
-        RecruitmentCollector::Parser::SpovolParser.new
+      parser_class_name = "#{host.gsub(/[^a-zA-Z0-9]/, '_').split('_').map(&:capitalize).join}Parser"
+
+      begin
+        parser_class = RecruitmentCollector::Parser.const_get(parser_class_name)
+      rescue NameError
+        puts "#{parser_class_name}が見つかりませんでした。"
+        parser_class = RecruitmentCollector::Parser::DefaultParser
       end
+
+      parser_class.new
     end
   end
 end

@@ -1,7 +1,7 @@
 module RecruitmentCollector
   module Parser
     # スポボラ用
-    class SpovolParser < RecruitmentCollector::DefaultParser
+    class SpovolNetParser < RecruitmentCollector::DefaultParser
       def initialize
         super
 

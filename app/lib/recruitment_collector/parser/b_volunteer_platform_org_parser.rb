@@ -1,7 +1,7 @@
 module RecruitmentCollector
   module Parser
     # ボランティアプラットフォーム用
-    class VolunteerPlatformParser < RecruitmentCollector::DefaultParser
+    class BVolunteerPlatformOrgParser < RecruitmentCollector::DefaultParser
       def initialize
         super
 
