@@ -1,0 +1,2 @@
+class OrganizationScrapedRecruitment < ApplicationRecord
+end

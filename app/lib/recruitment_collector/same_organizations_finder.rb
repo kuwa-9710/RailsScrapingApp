@@ -7,9 +7,14 @@ module RecruitmentCollector
 
     def run
       organization_name = @scraped_recruitment.organization_name
+      organization_email = @scraped_recruitment.organization_email
+      organization_phone_number = @scraped_recruitment.organization_phone_number
+      organization_hp = @scraped_recruitment.organization_hp
 
-      organization = OrganizationsScrapedRecruitment.find_by(name: organization_name)
-      
+      OrganizationScrapedRecruitment.find_by(
+        'organization_name = ? OR organization_email = ? OR organization_phone_number = ? OR organization_hp = ?',
+        organization_name, organization_email, organization_phone_number, organization_hp
+      )
     end
   end
 end
