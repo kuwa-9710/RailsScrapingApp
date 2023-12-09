@@ -1,5 +1,6 @@
 module RecruitmentCollector
-  # 同じ募集団体を探す
+  # 同じ募集団体があるかを探す
+  # 当てはまった場合は、その情報を返す
   class SameOrganizationsFinder
     def initialize(scraped_recruitment)
       @scraped_recruitment = scraped_recruitment

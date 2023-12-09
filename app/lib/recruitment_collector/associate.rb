@@ -15,9 +15,8 @@ module RecruitmentCollector
         next if organization.blank?
 
         # 紐付け情報を保存（既に過去紐付けを保存している場合はアップデート）
-        organizations_scraped_recruitment = OrganizationScrapedRecruitment.find_or_initialize_by(scraped_recruitment_id: recruitment.id)
+        organizations_scraped_recruitment = OrganizationScrapedRecruitment.find_or_initialize_by(scraped_recruitment: recruitment)
         organization_data = {
-          organization_id: organization.id,
           organization_name: organization.organization_name,
           organization_email: organization.organization_email,
           organization_phone_number: organization.organization_phone_number,
@@ -32,6 +31,12 @@ module RecruitmentCollector
         }
         recruitment.update(need_to_update_recruitment_data)
       end
+    end
+
+    private
+
+    def find_or_create_organization_scraped_recruitment(recruitment)
+      
     end
   end
 end
