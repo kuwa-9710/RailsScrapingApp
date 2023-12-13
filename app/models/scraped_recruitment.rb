@@ -4,4 +4,6 @@ class ScrapedRecruitment < ApplicationRecord
   scope :parsed_contents, -> { order(created_at: :desc).limit(50) }
 
   scope :need_to_associate, -> { where(organization_id: nil) }
+
+  scope :need_to_register, -> { where(organization_id: nil) }
 end
