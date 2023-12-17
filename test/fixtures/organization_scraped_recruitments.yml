@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization_id: 1
+  scraped_recruitment_id: 1
+  organization_name: MyString
+  organization_email: MyString
+  organization_phone_number: MyString
+  organization_hp: MyString
+
+two:
+  organization_id: 1
+  scraped_recruitment_id: 1
+  organization_name: MyString
+  organization_email: MyString
+  organization_phone_number: MyString
+  organization_hp: MyString

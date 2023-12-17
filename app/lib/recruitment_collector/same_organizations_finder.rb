@@ -1,5 +1,6 @@
 module RecruitmentCollector
-  # 同じ募集団体を探す
+  # 同じ募集団体があるかを探す
+  # 当てはまった場合は、その情報を返す
   class SameOrganizationsFinder
     def initialize(scraped_recruitment)
       @scraped_recruitment = scraped_recruitment
@@ -7,9 +8,14 @@ module RecruitmentCollector
 
     def run
       organization_name = @scraped_recruitment.organization_name
+      organization_email = @scraped_recruitment.organization_email
+      organization_phone_number = @scraped_recruitment.organization_phone_number
+      organization_hp = @scraped_recruitment.organization_hp
 
-      organization = OrganizationsScrapedRecruitment.find_by(name: organization_name)
-      
+      OrganizationScrapedRecruitment.find_by(
+        'organization_name = ? OR organization_email = ? OR organization_phone_number = ? OR organization_hp = ?',
+        organization_name, organization_email, organization_phone_number, organization_hp
+      )
     end
   end
 end
