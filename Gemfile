@@ -77,3 +77,5 @@ group :test do
 end
 
 gem 'shakapacker', '= 7.1'
+
+gem 'dartsass-rails', '~> 0.5.0'

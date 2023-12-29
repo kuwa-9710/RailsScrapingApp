@@ -90,6 +90,9 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    dartsass-rails (0.5.0)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -99,6 +102,8 @@ GEM
     execjs (2.9.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (3.25.1-arm64-darwin)
+    google-protobuf (3.25.1-x86_64-darwin)
     haml (6.2.3)
       temple (>= 0.8.2)
       thor
@@ -246,6 +251,10 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    sass-embedded (1.69.5-arm64-darwin)
+      google-protobuf (~> 3.23)
+    sass-embedded (1.69.5-x86_64-darwin)
+      google-protobuf (~> 3.23)
     selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -309,6 +318,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  dartsass-rails (~> 0.5.0)
   debug
   htmlbeautifier
   importmap-rails
