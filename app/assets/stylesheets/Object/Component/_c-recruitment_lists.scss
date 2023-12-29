@@ -1,0 +1,47 @@
+@use "../Utility/colors" as c;
+
+.c-recruitment_lists {
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
+.c-recruitment_lists__container {
+  position: relative;
+  width: 300px;
+  height: 280px;
+  display: inline-block;
+  padding: 0 1rem;
+  border: 2px solid c.$main_color;
+  border-radius: 1rem;
+}
+
+.c-recruitment_lists__title {
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
+.c-recruitment_lists__deadline {
+  display: block;
+  padding-top: 1rem;
+}
+
+.c-recruitment_lists__organization {
+  display: block;
+  padding-top: 1rem;
+}
+
+.c-recruitment_lists .c-button {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  margin-top: 1rem;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

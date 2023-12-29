@@ -1,0 +1,16 @@
+@use "../Utility/colors" as color;
+
+.p-header {
+  background-color: color.$cWhite;
+  color: color.$cTextBlack;
+  box-shadow: 0px 1px color.$cGray;
+}
+
+.p-header__container {
+  padding: 0.5rem 1rem;
+}
+
+.p-header__title {
+  font-weight: bold;
+  font-size: 2rem;
+}
