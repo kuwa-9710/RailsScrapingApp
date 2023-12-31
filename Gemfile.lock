@@ -69,6 +69,10 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     base64 (0.1.1)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -84,6 +88,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -91,12 +96,14 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    execjs (2.9.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.2.3)
       temple (>= 0.8.2)
       thor
       tilt
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -155,6 +162,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
+    rack-proxy (0.7.7)
+      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.8)
@@ -190,6 +199,12 @@ GEM
     rbs (3.2.2)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    react-rails (3.1.1)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     regexp_parser (2.8.1)
     reline (0.3.9)
       io-console (~> 0.5)
@@ -235,6 +250,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_range (3.0.0)
+    shakapacker (7.1.0)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -289,15 +310,18 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  htmlbeautifier
   importmap-rails
   jbuilder
   prettier
   puma (~> 5.0)
   rails (~> 7.0.8)
+  react-rails
   rspec-rails
   rubocop
   rubocop-rails
   selenium-webdriver
+  shakapacker (= 7.1)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
