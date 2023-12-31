@@ -2,8 +2,10 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header>
-      <h1 className="title__main">Scraping App</h1>
+    <header className="p-header">
+      <div className="p-header__container">
+        <h1 className="p-header__title">Scraping App</h1>
+      </div>
     </header>
   );
 };

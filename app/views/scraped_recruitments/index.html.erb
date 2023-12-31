@@ -1,38 +1,6 @@
 <%= react_component('Header') %>
 <div class="container">
   <div class="container__inner">
-    <h1 class="maintitle">Ruby on Rails Scraping Application.</h1>
-    <span class="maintitle__sub">求人一覧</span>
-    <div class="box__container">
-      <% if @scraped_recruitments.any? %>
-        <% @scraped_recruitments.each do |scraped_recruitment| %>
-          <div class="box__inner">
-            <h2 class="title"><%= scraped_recruitment.title %></h2>
-            <span class="deadline">締切日：<%= l(scraped_recruitment.deadline, format: :default) %></span>
-            <p class="description"><%= raw(scraped_recruitment.description.gsub(/\r\n?/, "<br>").html_safe) %></p>
-            <dl class="list">
-              <dt class="list__title">募集元サイト</dt>
-              <dd class="list__content"><a href="<%= scraped_recruitment.url %>"><%= scraped_recruitment.url %></a></dd>
-              <dt class="list__title">団体名</dt>
-              <dd class="list__content"><%= scraped_recruitment.organization_name %></dd>
-              <% if scraped_recruitment.organization_hp.present? %>
-                <dt class="list__title">ホームページ</dt>
-                <dd class="list__content"><a href="<%= scraped_recruitment.organization_hp %>"><%= scraped_recruitment.organization_hp %></a></dd>
-              <% end %>
-              <% if scraped_recruitment.organization_phone_number.present? %>
-                <dt class="list__title">TEL</dt>
-                <dd class="list__content"><%= scraped_recruitment.organization_phone_number %></dd>
-              <% end %>
-              <% if scraped_recruitment.organization_email.present? %>
-                <dt class="list__title">メールアドレス</dt>
-                <dd class="list__content"><%= scraped_recruitment.organization_email %></dd>
-              <% end %>
-            </dl>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="desc">現在、求人情報はありません。</p>
-      <% end %>
-    </div>
+    <%= react_component('TopRecruitments', { scraped_recruitments: @scraped_recruitments }) %>
   </div>
 </div>

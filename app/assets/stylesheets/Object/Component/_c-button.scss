@@ -1,0 +1,18 @@
+@use "../Utility/colors" as c;
+
+.c-button {
+  display: inline-block;
+  font-weight: bold;
+  color: #0f766e;
+  border: 2px solid #0f766e;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  background-color: c.$cWhite;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: c.$cWhite;
+    background-color: #0f766e;
+  }
+}
